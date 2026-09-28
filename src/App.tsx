@@ -8,7 +8,7 @@ const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
 
 type Status = 'idle' | 'loading' | 'done' | 'error';
 
-function WaitlistForm() {
+export function WaitlistForm() {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<Status>('idle');
 
