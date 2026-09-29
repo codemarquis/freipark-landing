@@ -1,0 +1,38 @@
+{
+  "header": {
+    "tagline": "Berlin · Straßenparkplätze, schnell gefunden"
+  },
+  "hero": {
+    "headline": "Finde freie Parkplätze in Berlin, bevor du den Block umrundest.",
+    "subheadline": "FreiPark zeigt kostenlose, kostenpflichtige und genehmigungspflichtige Parkplätze in Echtzeit auf der Karte. Keine Buchung, keine Überraschungen — nur wo du gerade jetzt parken kannst."
+  },
+  "waitlist": {
+    "label": "Frühzeitigen Zugang sichern",
+    "emailPlaceholder": "du@beispiel.de",
+    "joining": "Wird hinzugefügt…",
+    "join": "Warteliste beitreten",
+    "success": "Du stehst auf der Liste — wir schreiben dir, sobald FreiPark in Berlin startet.",
+    "error": "Etwas ist schiefgelaufen — bitte versuche es erneut."
+  },
+  "stores": {
+    "appStoreAlt": "Im App Store laden",
+    "googlePlayAlt": "Bei Google Play",
+    "launchingSoon": "Startet bald — tritt der Warteliste bei, um es als Erste(r) zu erfahren."
+  },
+  "features": {
+    "liveMapTitle": "Live-Parkplatzkarte",
+    "liveMapBody": "Kostenlose, kostenpflichtige und genehmigungspflichtige Parkplätze, aktualisiert während du dich durch die Stadt bewegst.",
+    "directionsTitle": "Wegbeschreibung mit einem Tap",
+    "directionsBody": "Route direkt zu einem freien Parkplatz — ohne Umwege durch App-Menüs.",
+    "paymentTitle": "Zahle, wie du es schon gewohnt bist",
+    "paymentBody": "Kostenpflichtige Parkplätze leiten zu EasyPark oder ParkNow weiter — FreiPark fasst deine Zahlung nie an."
+  },
+  "footer": {
+    "builtIn": "Gebaut in Berlin mit ❤️. © {{year}} FreiPark."
+  },
+  "streetPhoto": {
+    "freeSpot": "Freier Platz",
+    "parked": "Geparkt",
+    "altText": "Eine Wohnstraße in Berlin in der Nähe des Fernsehturms, mit am Straßenrand geparkten Autos"
+  }
+}

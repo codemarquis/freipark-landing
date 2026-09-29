@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { WaitlistForm } from './App';
+import App, { WaitlistForm } from './App';
 
 const mockFetch = vi.fn();
 
@@ -66,5 +66,40 @@ describe('WaitlistForm', () => {
     expect(screen.getByRole('button', { name: /joining/i })).toBeDisabled();
     resolveFetch({ ok: true, status: 201 });
     expect(await screen.findByText(/you're on the list/i)).toBeInTheDocument();
+  });
+});
+
+describe('language switcher', () => {
+  it('shows a pill for each supported language, English active by default in tests', () => {
+    render(<App />);
+    expect(screen.getByText('DE')).toBeInTheDocument();
+    expect(screen.getByText('EN')).toBeInTheDocument();
+    expect(screen.getByText('TR')).toBeInTheDocument();
+  });
+
+  it('switches the page text when a pill is clicked', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
+      /find free street parking/i,
+    );
+
+    await user.click(screen.getByText('DE'));
+
+    await waitFor(() =>
+      expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
+        /freie parkplätze/i,
+      ),
+    );
+
+    // Switch back so later tests in this file/suite don't inherit German
+    // from this one — i18next is a shared module-level singleton.
+    await user.click(screen.getByText('EN'));
+    await waitFor(() =>
+      expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
+        /find free street parking/i,
+      ),
+    );
   });
 });

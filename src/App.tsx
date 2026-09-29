@@ -1,14 +1,45 @@
 import { type FormEvent, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { StreetPhoto } from './StreetPhoto';
+import { SUPPORTED_LANGUAGES, setLanguage, type SupportedLanguage } from './i18n';
 import appStoreBadge from './assets/badges/app-store-badge.svg';
 import googlePlayBadge from './assets/badges/google-play-badge.png';
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
 
+const LANGUAGE_LABEL: Record<SupportedLanguage, string> = {
+  de: 'DE',
+  en: 'EN',
+  tr: 'TR',
+};
+
+function LanguageSwitcher() {
+  const { i18n } = useTranslation();
+  return (
+    <div className="flex gap-1.5">
+      {SUPPORTED_LANGUAGES.map((lang) => (
+        <button
+          key={lang}
+          type="button"
+          onClick={() => setLanguage(lang)}
+          className={`rounded-full px-2.5 py-1 text-xs font-bold transition ${
+            i18n.language === lang
+              ? 'bg-blue-600 text-white'
+              : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
+          }`}
+        >
+          {LANGUAGE_LABEL[lang]}
+        </button>
+      ))}
+    </div>
+  );
+}
+
 type Status = 'idle' | 'loading' | 'done' | 'error';
 
 export function WaitlistForm() {
+  const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<Status>('idle');
 
@@ -40,9 +71,7 @@ export function WaitlistForm() {
 
   if (status === 'done') {
     return (
-      <p className="text-lg font-medium text-emerald-600">
-        You're on the list — we'll email you when FreiPark launches in Berlin.
-      </p>
+      <p className="text-lg font-medium text-emerald-600">{t('waitlist.success')}</p>
     );
   }
 
@@ -51,7 +80,7 @@ export function WaitlistForm() {
       <input
         type="email"
         required
-        placeholder="you@example.com"
+        placeholder={t('waitlist.emailPlaceholder')}
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         className="w-full flex-1 rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:outline-none"
@@ -61,10 +90,10 @@ export function WaitlistForm() {
         disabled={status === 'loading'}
         className="rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700 disabled:opacity-60"
       >
-        {status === 'loading' ? 'Joining…' : 'Join the waitlist'}
+        {status === 'loading' ? t('waitlist.joining') : t('waitlist.join')}
       </button>
       {status === 'error' && (
-        <p className="w-full text-sm text-red-600">Something went wrong — please try again.</p>
+        <p className="w-full text-sm text-red-600">{t('waitlist.error')}</p>
       )}
     </form>
   );
@@ -79,36 +108,37 @@ function StoreBadge({ src, alt, height }: { src: string; alt: string; height: nu
 }
 
 export default function App() {
+  const { t } = useTranslation();
   return (
     <div className="min-h-screen bg-slate-50">
       <header className="mx-auto flex max-w-5xl items-center justify-between px-6 py-6">
         <span className="text-lg font-bold text-slate-900">FreiPark</span>
-        <span className="text-sm text-slate-500">Berlin · street parking, found fast</span>
+        <div className="flex items-center gap-4">
+          <span className="hidden text-sm text-slate-500 sm:inline">{t('header.tagline')}</span>
+          <LanguageSwitcher />
+        </div>
       </header>
 
       <main className="mx-auto max-w-5xl px-6 pb-24">
         <section className="grid items-center gap-10 pt-8 sm:grid-cols-2 sm:pt-16">
           <div>
             <h1 className="text-4xl font-bold leading-tight text-slate-900 sm:text-5xl">
-              Find free street parking in Berlin, before you circle the block.
+              {t('hero.headline')}
             </h1>
-            <p className="mt-4 text-lg text-slate-600">
-              FreiPark shows free, paid, and permit-zone spots on the map in real time. No booking,
-              no surprises — just where to park, right now.
-            </p>
+            <p className="mt-4 text-lg text-slate-600">{t('hero.subheadline')}</p>
 
             <div id="waitlist" className="mt-8 scroll-mt-24">
               <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-blue-600">
-                Get early access
+                {t('waitlist.label')}
               </p>
               <WaitlistForm />
             </div>
 
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              <StoreBadge src={appStoreBadge} alt="Download on the App Store" height={48} />
-              <StoreBadge src={googlePlayBadge} alt="Get it on Google Play" height={62} />
+              <StoreBadge src={appStoreBadge} alt={t('stores.appStoreAlt')} height={48} />
+              <StoreBadge src={googlePlayBadge} alt={t('stores.googlePlayAlt')} height={62} />
             </div>
-            <p className="mt-2 text-xs text-slate-400">Launching soon — join the waitlist to be first to know.</p>
+            <p className="mt-2 text-xs text-slate-400">{t('stores.launchingSoon')}</p>
           </div>
 
           <StreetPhoto />
@@ -116,28 +146,22 @@ export default function App() {
 
         <section className="mt-24 grid gap-8 sm:grid-cols-3">
           <div>
-            <h2 className="text-lg font-semibold text-slate-900">Live spot map</h2>
-            <p className="mt-2 text-slate-600">
-              Free, paid, and permit-zone spots, updated as you move around the city.
-            </p>
+            <h2 className="text-lg font-semibold text-slate-900">{t('features.liveMapTitle')}</h2>
+            <p className="mt-2 text-slate-600">{t('features.liveMapBody')}</p>
           </div>
           <div>
-            <h2 className="text-lg font-semibold text-slate-900">One-tap directions</h2>
-            <p className="mt-2 text-slate-600">
-              Route straight to an open spot — no detours through app menus.
-            </p>
+            <h2 className="text-lg font-semibold text-slate-900">{t('features.directionsTitle')}</h2>
+            <p className="mt-2 text-slate-600">{t('features.directionsBody')}</p>
           </div>
           <div>
-            <h2 className="text-lg font-semibold text-slate-900">Pay where you already do</h2>
-            <p className="mt-2 text-slate-600">
-              Paid spots hand off to EasyPark or ParkNow — FreiPark never touches your payment.
-            </p>
+            <h2 className="text-lg font-semibold text-slate-900">{t('features.paymentTitle')}</h2>
+            <p className="mt-2 text-slate-600">{t('features.paymentBody')}</p>
           </div>
         </section>
       </main>
 
       <footer className="border-t border-slate-200 py-8 text-center text-sm text-slate-500">
-        Built in Berlin with ❤️. © {new Date().getFullYear()} FreiPark.
+        {t('footer.builtIn', { year: new Date().getFullYear() })}
       </footer>
     </div>
   );

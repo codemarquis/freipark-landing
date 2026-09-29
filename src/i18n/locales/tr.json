@@ -1,0 +1,38 @@
+{
+  "header": {
+    "tagline": "Berlin · sokak parkı, hızlıca bulunur"
+  },
+  "hero": {
+    "headline": "Sokağı turlamadan önce Berlin'de ücretsiz park yeri bulun.",
+    "subheadline": "FreiPark, ücretsiz, ücretli ve izin gerektiren park yerlerini gerçek zamanlı olarak haritada gösterir. Rezervasyon yok, sürpriz yok — sadece şu an nereye park edebileceğiniz."
+  },
+  "waitlist": {
+    "label": "Erken erişim kazanın",
+    "emailPlaceholder": "sen@ornek.com",
+    "joining": "Ekleniyor…",
+    "join": "Bekleme listesine katıl",
+    "success": "Listedesiniz — FreiPark Berlin'de başladığında size e-posta göndereceğiz.",
+    "error": "Bir şeyler ters gitti — lütfen tekrar deneyin."
+  },
+  "stores": {
+    "appStoreAlt": "App Store'dan indirin",
+    "googlePlayAlt": "Google Play'de edinin",
+    "launchingSoon": "Yakında başlıyor — ilk öğrenen siz olmak için bekleme listesine katılın."
+  },
+  "features": {
+    "liveMapTitle": "Canlı park yeri haritası",
+    "liveMapBody": "Şehirde hareket ettikçe güncellenen ücretsiz, ücretli ve izin gerektiren park yerleri.",
+    "directionsTitle": "Tek dokunuşla yol tarifi",
+    "directionsBody": "Uygulama menülerinde dolaşmadan doğrudan boş bir park yerine gidin.",
+    "paymentTitle": "Zaten kullandığınız yöntemle ödeyin",
+    "paymentBody": "Ücretli park yerleri EasyPark veya ParkNow'a yönlendirir — FreiPark ödemenize asla dokunmaz."
+  },
+  "footer": {
+    "builtIn": "Berlin'de ❤️ ile yapıldı. © {{year}} FreiPark."
+  },
+  "streetPhoto": {
+    "freeSpot": "Boş yer",
+    "parked": "Park edildi",
+    "altText": "Berlin'de Fernsehturm yakınında, kaldırım kenarında park edilmiş arabaların olduğu bir konut sokağı"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "header": {
+    "tagline": "Berlin · street parking, found fast"
+  },
+  "hero": {
+    "headline": "Find free street parking in Berlin, before you circle the block.",
+    "subheadline": "FreiPark shows free, paid, and permit-zone spots on the map in real time. No booking, no surprises — just where to park, right now."
+  },
+  "waitlist": {
+    "label": "Get early access",
+    "emailPlaceholder": "you@example.com",
+    "joining": "Joining…",
+    "join": "Join the waitlist",
+    "success": "You're on the list — we'll email you when FreiPark launches in Berlin.",
+    "error": "Something went wrong — please try again."
+  },
+  "stores": {
+    "appStoreAlt": "Download on the App Store",
+    "googlePlayAlt": "Get it on Google Play",
+    "launchingSoon": "Launching soon — join the waitlist to be first to know."
+  },
+  "features": {
+    "liveMapTitle": "Live spot map",
+    "liveMapBody": "Free, paid, and permit-zone spots, updated as you move around the city.",
+    "directionsTitle": "One-tap directions",
+    "directionsBody": "Route straight to an open spot — no detours through app menus.",
+    "paymentTitle": "Pay where you already do",
+    "paymentBody": "Paid spots hand off to EasyPark or ParkNow — FreiPark never touches your payment."
+  },
+  "footer": {
+    "builtIn": "Built in Berlin with ❤️. © {{year}} FreiPark."
+  },
+  "streetPhoto": {
+    "freeSpot": "Free spot",
+    "parked": "Parked",
+    "altText": "A residential street in Berlin near the Fernsehturm, with cars parked along the curb"
+  }
+}

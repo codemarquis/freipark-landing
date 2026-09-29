@@ -1,4 +1,5 @@
 import { type MouseEvent, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import berlinStreet from './assets/photos/berlin-street.jpg';
 
 // Real photo of a Berlin street (Fernsehturm + elevated U-Bahn, Prenzlauer
@@ -26,11 +27,12 @@ const MARKERS: Marker[] = [
 ];
 
 function FreePin() {
+  const { t } = useTranslation();
   return (
     <div className="relative -translate-x-1/2 -translate-y-full">
       <div className="flex flex-col items-center drop-shadow-lg">
         <span className="rounded-full bg-blue-600 px-2 py-0.5 text-[10px] font-semibold text-white shadow">
-          Free spot
+          {t('streetPhoto.freeSpot')}
         </span>
         <svg width="26" height="32" viewBox="0 0 26 32" className="-mt-0.5">
           <path
@@ -45,11 +47,12 @@ function FreePin() {
 }
 
 function ParkedBadge() {
+  const { t } = useTranslation();
   return (
     <div className="relative -translate-x-1/2 -translate-y-1/2">
       <div
         className="flex h-6 w-6 items-center justify-center rounded-full border-2 border-white bg-slate-700/90 text-xs shadow-lg"
-        title="Parked"
+        title={t('streetPhoto.parked')}
       >
         🚗
       </div>
@@ -60,6 +63,7 @@ function ParkedBadge() {
 const MAX_TILT_DEG = 10;
 
 export function StreetPhoto() {
+  const { t } = useTranslation();
   const wrapRef = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ rx: 0, ry: 0 });
   const [active, setActive] = useState(false);
@@ -100,7 +104,7 @@ export function StreetPhoto() {
         >
           <img
             src={berlinStreet}
-            alt="A residential street in Berlin near the Fernsehturm, with cars parked along the curb"
+            alt={t('streetPhoto.altText')}
             className="h-full w-full object-cover"
           />
           {MARKERS.map((m, i) => (
@@ -116,10 +120,10 @@ export function StreetPhoto() {
       </div>
       <div className="mt-3 flex items-center gap-4 text-xs text-slate-500">
         <span className="flex items-center gap-1.5">
-          <span className="inline-block h-2.5 w-2.5 rounded-full bg-blue-600" /> Free spot
+          <span className="inline-block h-2.5 w-2.5 rounded-full bg-blue-600" /> {t('streetPhoto.freeSpot')}
         </span>
         <span className="flex items-center gap-1.5">
-          <span className="inline-block h-2.5 w-2.5 rounded-full bg-slate-700" /> Parked
+          <span className="inline-block h-2.5 w-2.5 rounded-full bg-slate-700" /> {t('streetPhoto.parked')}
         </span>
       </div>
     </div>
