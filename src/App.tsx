@@ -136,7 +136,7 @@ export default function App() {
 
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <StoreBadge src={appStoreBadge} alt={t('stores.appStoreAlt')} height={48} />
-              <StoreBadge src={googlePlayBadge} alt={t('stores.googlePlayAlt')} height={62} />
+              <StoreBadge src={googlePlayBadge} alt={t('stores.googlePlayAlt')} height={48} />
             </div>
             <p className="mt-2 text-xs text-slate-400">{t('stores.launchingSoon')}</p>
           </div>
